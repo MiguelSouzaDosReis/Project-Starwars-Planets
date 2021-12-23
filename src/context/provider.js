@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Table from '../componetes/Table';
+import PropTypes from 'prop-types';
 import MyContext from './context';
 
-function Provider() {
+function Provider({ children }) {
   const [starWars, SetStarwars] = useState([]);
+  const [input, SetInput] = useState('');
   const url = 'https://swapi-trybe.herokuapp.com/api/planets/';
 
   const fetchStarWars = async () => {
@@ -17,13 +18,19 @@ function Provider() {
 
   const context = {
     starWars,
+    SetInput,
+    input,
   };
 
   return (
     <MyContext.Provider value={ context }>
-      <Table />
+      { children }
     </MyContext.Provider>
   );
 }
+
+Provider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Provider;
