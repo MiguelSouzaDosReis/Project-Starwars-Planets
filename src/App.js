@@ -4,11 +4,13 @@
 import React from 'react';
 import Table from './Pages/Table';
 import Input from './Pages/Input';
+import Dropdown from './Pages/Dropdown';
 import Provider from './context/provider';
 
 function App() {
   return (
     <Provider>
+      <Dropdown />
       <Input />
       <Table />
     </Provider>
