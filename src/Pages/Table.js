@@ -1,11 +1,14 @@
 // na função handleClick, me basei no codigo do Fernando Segregio
 // https://github.com/tryber/sd-015-b-project-starwars-planets-search/pull/41/commits/a95ef5909e94d7bfabeb00e0a2547d04e4a67a9a
+// Para fazer o requisito 4 consultuei o codigo de Matheus Pessoa
+// https://github.com/tryber/sd-015-b-project-starwars-planets-search/pull/97/commits/ae810943e099fa99be4989798f59986df9d679f8
 
 import React, { useContext } from 'react';
 import MyContext from '../context/context';
 
 function Table() {
-  const { starWars, input, dates, setFilterColumn, filterColumn } = useContext(MyContext);
+  const { starWars, input, dates, setFilterColumn,
+    filterColumn, setColumns, columns } = useContext(MyContext);
   function handleClick() {
     const { column, comparison, value } = dates;
     const newFilter = starWars.filter((elemnt) => {
@@ -21,10 +24,8 @@ function Table() {
       }
     });
     setFilterColumn(newFilter);
+    setColumns(columns.filter((element) => element !== column));
   }
-
-  /* let searchedTerm = input ? input.toLowerCase() : ''; */
-
   return (
     <div>
       <button

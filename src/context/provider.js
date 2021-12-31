@@ -14,6 +14,9 @@ function Provider({ children }) {
     column: 'population',
     comparison: 'maior que',
     value: 0 });
+  const [columns, setColumns] = useState([
+    'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water',
+  ]);
 
   const fetchStarWars = async () => {
     const { results } = await fetch(url).then((response) => response.json());
@@ -33,6 +36,8 @@ function Provider({ children }) {
     SetDates,
     filterColumn,
     setFilterColumn,
+    columns,
+    setColumns,
   };
 
   return (

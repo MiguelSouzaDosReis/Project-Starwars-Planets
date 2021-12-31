@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import MyContext from '../context/context';
 
 function Dropdown() {
-  const { dates, SetDates } = useContext(MyContext);
+  const { dates, SetDates, columns } = useContext(MyContext);
   const { value } = dates;
   return (
     <div>
@@ -12,11 +12,9 @@ function Dropdown() {
         data-testid="column-filter"
         onChange={ (event) => SetDates({ ...dates, column: event.target.value }) }
       >
-        <option value="population">population</option>
-        <option value="orbital_period">orbital_period</option>
-        <option value="diameter">diameter</option>
-        <option value="rotation_period">rotation_period</option>
-        <option value="surface_water">surface_water</option>
+        {columns.map((element) => (
+          <option key={ element } value={ element }>{element}</option>
+        ))}
       </select>
 
       <select
